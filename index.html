@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="player"></div>
+
+    <script>
+      var tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          videoId: 'dTDYoJZyXuc',
+          height: "1080",
+          width: "1920",
+          events: {
+            'onReady': onPlayerReady
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+        setTimeout(function() {
+          seekVideo(2);
+        }, 60000);
+        setTimeout(function() {
+          seekVideo(4);
+        }, 120000);
+        setTimeout(function() {
+          seekVideo(6);
+        }, 180000);
+        setTimeout(function() {
+          seekVideo(8);
+        }, 240000);
+        setTimeout(function() {
+          seekVideo(10);
+        }, 300000);
+        setTimeout(function() {
+          seekVideo(12);
+        }, 360000);
+        setTimeout(function() {
+          seekVideo(14);
+        }, 420000);
+      }
+
+      function seekVideo(seekToTime) {
+        seekToTime = (Math.round(Math.random() * 10) - 5) + (60 * seekToTime)
+        player.seekTo(seekToTime , true);
+      }
+
+    </script>
+  </body>
+</html>
