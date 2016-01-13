@@ -51,6 +51,12 @@
         player.seekTo(seekToTime , true);
       }
 
+      // when video ends close this window
+      function onPlayerStateChange(event) {        
+        if(event.data === 0) {          
+          close();
+        }
+
     </script>
   </body>
 </html>
